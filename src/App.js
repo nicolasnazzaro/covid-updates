@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Cards from './components/cards/Cards';
 import Chart from './components/chart/Chart';
 import CountryPicker from './components/countryPicker/CountryPicker';
-import { fetchData } from './api/agent';
+import styles from './App.module.css';
 
 
 
 const App = () => {
-  
-  const [data, setData] = useState({});
-  
-  useEffect(() => {
-    fetchData().then(response => setData({...response}));
-  },[]);
-  
   return (
-    <div>
-      <Cards data={data}/>
+    <div className={styles.container}>
+      <Cards/>
       <Chart/>
       <CountryPicker/>
     </div>

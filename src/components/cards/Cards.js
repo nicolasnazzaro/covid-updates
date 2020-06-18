@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchData } from '../../api/agent';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 import CountUp from 'react-countup';
 import styles from './cards.module.css';
 import cx from 'classnames';
 
-const Cards = ({data}) => {
+const Cards = () => {
+
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        const setFetchedData = async () => {
+            setData(await fetchData());
+        }
+        setFetchedData();
+    }, []);
 
     if (!data.confirmed) return <p>Loading...</p>
 
