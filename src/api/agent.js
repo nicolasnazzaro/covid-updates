@@ -12,7 +12,6 @@ export const fetchData = async () => {
             deaths,
             lastUpdate
         }
-        console.log(neededData);
         return neededData;
     }
     catch (error) {
