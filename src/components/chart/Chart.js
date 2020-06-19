@@ -17,7 +17,7 @@ const Chart = () => {
                 labels: data.map(({date}) => date),
                 datasets: [{
                     data: data.map(({confirmed}) => confirmed),
-                    label: 'Infected',
+                    label: 'Total Infected',
                     borderColor: '#3333ff',
                     fill: true
                 }, {
@@ -26,6 +26,17 @@ const Chart = () => {
                     borderColor: 'red',
                     backgroundColor: 'rgba(255, 0, 0, 0.5)',
                     fill: true
+                }, {
+                    data: data.map((d, i) => {
+                        let value;
+                        if (i>0) {
+                            value = data[i].confirmed - data[i-1].confirmed
+                        }
+                        return value;
+                    }),
+                    label: 'Infected daily increment',
+                    borderColor: 'yellow',
+                    fill: true
                 }]
             }}
         />
@@ -33,7 +44,11 @@ const Chart = () => {
     
     if (!data.length) return <p>loading...</p>
 
-    return lineChart;
+    return (
+        <div className={styles.container}>
+            {lineChart}
+        </div>
+    );
 }
 
 export default Chart;
