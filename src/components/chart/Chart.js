@@ -24,7 +24,7 @@ const Chart = () => {
                     data: data.map(({deaths}) => deaths),
                     label: 'Deaths',
                     borderColor: 'red',
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
                     fill: true
                 }, {
                     data: data.map((d, i) => {
@@ -36,6 +36,7 @@ const Chart = () => {
                     }),
                     label: 'Infected daily increment',
                     borderColor: 'yellow',
+                    backgroundColor: 'rgba(255, 255, 125, 0.1)',
                     fill: true
                 }]
             }}
