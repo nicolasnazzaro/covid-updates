@@ -1,6 +1,6 @@
 {
   "name": "covid-updates",
-  "homepage": "http://nicolasnazzaro.github.io/covid-update",
+  "homepage": "https://nicolasnazzaro.github.io/covid-updates/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
