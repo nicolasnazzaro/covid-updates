@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { fetchData } from '../../api/agent';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import CountryPicker from '../countryPicker/CountryPicker';
 import CountUp from 'react-countup';
 import styles from './cards.module.css';
 import cx from 'classnames';
@@ -8,6 +9,7 @@ import cx from 'classnames';
 const Cards = () => {
 
     const [data, setData] = useState({});
+    const [selectedCountry, setSelectedCountry] = useState('');
 
     useEffect(() => {
         const setFetchedData = async () => {
@@ -16,9 +18,18 @@ const Cards = () => {
         setFetchedData();
     }, []);
 
+    const handleCountryChange = async (country) => {
+        setSelectedCountry(country);
+    }
+
     if (!data.confirmed) return <p>Loading...</p>
 
     return (
+        <Fragment>
+            <div className={styles.pickerContainer}>
+                <h3 style={{marginRight: 20}}>By country:</h3>
+                <CountryPicker handleCountryChange={handleCountryChange}/>
+            </div>
             <Grid container spacig={3} justify='center' className={styles.container}>
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
                     <CardContent>
@@ -66,6 +77,7 @@ const Cards = () => {
                     </CardContent>
                 </Grid>
             </Grid>
+        </Fragment>
     );
 }
 

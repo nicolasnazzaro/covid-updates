@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchChartData } from '../../api/agent';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import styles from './chart.module.css';
 
 const Chart = () => {
@@ -41,12 +41,12 @@ const Chart = () => {
             }}
         />
     )
-    
-    if (!data.length) return <p>loading...</p>
 
     return (
         <div className={styles.container}>
-            {lineChart}
+            <h3>Global Overview</h3>
+            {!data.length ? (<p>loading chart...</p>)
+            : lineChart}
         </div>
     );
 }
