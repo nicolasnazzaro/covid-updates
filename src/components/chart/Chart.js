@@ -40,13 +40,15 @@ const Chart = () => {
                 }]
             }}
         />
-    )
+    );
 
     return (
         <div className={styles.container}>
             <h3>Global Overview</h3>
-            {!data.length ? (<p>loading chart...</p>)
-            : lineChart}
+            {!data.length 
+                ? (<p>Loading chart...</p>)
+                : lineChart
+            }
         </div>
     );
 }

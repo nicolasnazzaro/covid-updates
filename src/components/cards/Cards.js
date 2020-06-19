@@ -13,16 +13,16 @@ const Cards = () => {
 
     useEffect(() => {
         const setFetchedData = async () => {
-            setData(await fetchData());
+            setData(await fetchData(selectedCountry));
         }
         setFetchedData();
-    }, []);
+    }, [selectedCountry]);
 
     const handleCountryChange = async (country) => {
         setSelectedCountry(country);
     }
 
-    if (!data.confirmed) return <p>Loading...</p>
+    if (!data.confirmed) return <p>Loading cards...</p>;
 
     return (
         <Fragment>
